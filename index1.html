@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Car Workshop</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #111;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ff6600;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #ff6600;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #e65c00;
+        }
+
+        .container {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            color: #ff6600;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media(max-width:600px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Royal Car Workshop</h1>
+    <p>Professional Car Repair & Service Center</p>
+</header>
+
+<nav>
+    <a href="index1.html">Home</a>
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="hero">
+    <h1>Your Car Deserves the Best Care</h1>
+    <p>Trusted by 1000+ customers</p>
+    <button onclick="alert('Booking feature coming soon!')">Book Service</button>
+</section>
+
+<section class="container">
+    <h2>Our Services</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Car Repair</h3>
+            <p>Complete engine and mechanical repair.</p>
+        </div>
+
+        <div class="card">
+            <h3>Oil Change</h3>
+            <p>Fast and affordable oil change service.</p>
+        </div>
+
+        <div class="card">
+            <h3>Car Wash</h3>
+            <p>Premium washing and cleaning service.</p>
+        </div>
+
+        <div class="card">
+            <h3>AC Service</h3>
+            <p>Full AC inspection and gas refill.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="container">
+    <h2>About Us</h2>
+    <p>
+        Royal Car Workshop provides professional and reliable car services.
+        Our experienced mechanics ensure high-quality service and customer satisfaction.
+    </p>
+</section>
+
+<section class="container">
+    <h2>Contact Us</h2>
+    <p>📍 Location: Rajasthan, India</p>
+    <p>📞 Phone: +91 9876543210</p>
+    <p>📧 Email: royalcarworkshop@gmail.com</p>
+</section>
+
+<footer>
+    <p>© 2026 Royal Car Workshop | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
