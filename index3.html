@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Rathore World</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:linear-gradient(135deg,#3b0000,#800000,#3b0000);
+color:white;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#ffcc00,#800000,#ffcc00);
+color:white;
+padding:20px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+box-shadow:0 0 10px black;
+}
+
+/* NAV */
+
+nav{
+background:black;
+padding:10px;
+text-align:center;
+}
+
+nav button{
+padding:12px 18px;
+margin:5px;
+background:linear-gradient(#ffcc00,#ffaa00);
+border:none;
+font-weight:bold;
+border-radius:10px;
+cursor:pointer;
+}
+
+nav button:hover{
+background:linear-gradient(#ffaa00,#ffcc00);
+}
+
+/* SECTIONS */
+
+.section{
+display:none;
+padding:20px;
+text-align:center;
+}
+
+/* HOME DECORATION */
+
+.home-box{
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 15px gold;
+}
+
+/* CARD */
+
+.card{
+background:white;
+color:black;
+padding:10px;
+margin:15px auto;
+border-radius:15px;
+box-shadow:0 0 10px gold;
+max-width:300px;
+cursor:pointer;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+img{
+width:100%;
+border-radius:10px;
+}
+
+input{
+padding:10px;
+width:80%;
+margin:10px;
+border-radius:10px;
+border:none;
+}
+
+footer{
+background:black;
+padding:10px;
+text-align:center;
+margin-top:20px;
+}
+
+.voice-btn{
+padding:10px 15px;
+margin:10px;
+border:none;
+border-radius:10px;
+background:#ffcc00;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+🏰 Rathore World 🏰  
+<br>
+Owner: Palak Nandani Rathore
+
+</header>
+
+<nav>
+
+<button onclick="show('home')">Home</button>
+<button onclick="show('kings')">Kings</button>
+<button onclick="show('search')">Search</button>
+<button onclick="show('contact')">Contact</button>
+
+</nav>
+
+<!-- HOME -->
+
+<div id="home" class="section" style="display:block">
+
+<div class="home-box">
+
+<h2>Welcome to Rathore World</h2>
+
+<p>
+Explore the life stories of great Rajput Kings.<br>
+Learn their bravery, battles and history.
+</p>
+
+<p>
+यह वेबसाइट महान राजपूत राजाओं के जीवन की जानकारी देती है।
+</p>
+
+<h3>Click Kings to Start</h3>
+
+</div>
+
+</div>
+
+<!-- KINGS -->
+
+<div id="kings" class="section">
+
+<div class="card"
+onclick="showDetail(
+'Maharana Pratap',
+'1540',
+'Udai Singh',
+'Jaiwanta Bai',
+'Battle of Haldighati',
+'1597'
+)">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Maharana_Pratap.jpg">
+
+<h3>Maharana Pratap</h3>
+
+</div>
+
+</div>
+
+<!-- DETAIL -->
+
+<div id="detail" class="section">
+
+<button onclick="show('kings')" class="voice-btn">⬅ Back</button>
+
+<div id="detailText"></div>
+
+<button onclick="speakEnglish()" class="voice-btn">🔊 English Voice</button>
+
+<button onclick="speakHindi()" class="voice-btn">🔊 Hindi Voice</button>
+
+</div>
+
+<!-- SEARCH -->
+
+<div id="search" class="section">
+
+<h2>Search King</h2>
+
+<input type="text" id="searchInput" placeholder="Enter king name">
+
+<button onclick="searchKing()" class="voice-btn">Search</button>
+
+<div id="searchResult"></div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div id="contact" class="section">
+
+<h2>Contact</h2>
+
+<p>Owner: Palak Nandani Rathore</p>
+
+<p>Phone: 9929039976</p>
+
+</div>
+
+<footer>
+
+Rathore World © 2026
+
+</footer>
+
+<script>
+
+let currentEnglish="";
+let currentHindi="";
+
+function show(id){
+
+document.querySelectorAll(".section").forEach(sec=>sec.style.display="none");
+
+document.getElementById(id).style.display="block";
+
+}
+
+function showDetail(name,birth,father,mother,battle,death){
+
+currentEnglish=
+
+name+" was born in "+birth+
+". His father was "+father+
+". His mother was "+mother+
+". His major battle was "+battle+
+". He died in "+death;
+
+currentHindi=
+
+name+" का जन्म "+birth+
+" में हुआ। इनके पिता "+father+
+" थे। माता "+mother+
+" थीं। इनकी प्रमुख लड़ाई "+battle+
+" थी। इनकी मृत्यु "+death+" में हुई।";
+
+document.getElementById("detailText").innerHTML=
+
+"<h2>"+name+"</h2>"+
+
+"<p>"+
+"<b>Birth:</b> "+birth+"<br>"+
+"<b>Father:</b> "+father+"<br>"+
+"<b>Mother:</b> "+mother+"<br>"+
+"<b>Battle:</b> "+battle+"<br>"+
+"<b>Death:</b> "+death+
+"</p>";
+
+show("detail");
+
+}
+
+/* ENGLISH VOICE */
+
+function speakEnglish(){
+
+let speech=new SpeechSynthesisUtterance(currentEnglish);
+
+speech.lang="en-US";
+
+speechSynthesis.speak(speech);
+
+}
+
+/* HINDI VOICE */
+
+function speakHindi(){
+
+let speech=new SpeechSynthesisUtterance(currentHindi);
+
+speech.lang="hi-IN";
+
+speechSynthesis.speak(speech);
+
+}
+
+function searchKing(){
+
+let name=document.getElementById("searchInput").value;
+
+document.getElementById("searchResult").innerHTML=
+
+"Information about "+name+" will be added soon.";
+
+}
+
+</script>
+
+</body>
+</html>
