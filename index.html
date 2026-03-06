@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Rathore World</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* BACKGROUND ANIMATION */
+
+body{
+
+margin:0;
+font-family:Arial;
+background:linear-gradient(-45deg,#3b0000,#800000,#1a0000,#a52a2a);
+background-size:400% 400%;
+animation:bgAnimation 10s infinite alternate;
+color:white;
+text-align:center;
+
+}
+
+@keyframes bgAnimation{
+
+0%{background-position:left}
+100%{background-position:right}
+
+}
+
+/* HEADER ANIMATION */
+
+header{
+
+font-size:28px;
+padding:20px;
+background:linear-gradient(90deg,gold,#800000,gold);
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{box-shadow:0 0 10px gold}
+to{box-shadow:0 0 30px gold}
+
+}
+
+/* WELCOME TEXT ANIMATION */
+
+.welcome{
+
+font-size:24px;
+margin-top:50px;
+animation:fadeIn 3s;
+
+}
+
+@keyframes fadeIn{
+
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+
+}
+
+/* BUTTON ANIMATION */
+
+.btn{
+
+padding:15px 25px;
+font-size:18px;
+margin:20px;
+background:gold;
+border:none;
+border-radius:10px;
+cursor:pointer;
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+
+}
+
+.btn:hover{
+
+background:orange;
+
+}
+
+/* FLOATING PARTICLES */
+
+.particle{
+
+position:absolute;
+width:10px;
+height:10px;
+background:gold;
+border-radius:50%;
+animation:float 5s infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0)}
+100%{transform:translateY(-100vh)}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+👑 Rathore World 👑
+
+<br>
+
+Owner: Palak Nandani Rathore
+
+</header>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="kings.html">Kings</a>
+
+<a href="search.html">Search</a>
+
+<a href="quiz.html">Quiz</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+<div class="welcome">
+
+<h1>Welcome to Royal Rathore World</h1>
+
+<p>
+
+"Veerta aur balidan hi Rajput ki asli pehchan hai"
+
+</p>
+
+<button class="btn" onclick="location.href='kings.html'">
+
+Explore Kings
+
+</button>
+
+</div>
+
+<!-- PARTICLES -->
+
+<script>
+
+/* Create floating particles */
+
+for(let i=0;i<20;i++){
+
+let particle=document.createElement("div");
+
+particle.className="particle";
+
+particle.style.left=Math.random()*100+"%";
+
+particle.style.top=Math.random()*100+"%";
+
+particle.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(particle);
+
+}
+
+</script>
+
+</body>
+  </html>
