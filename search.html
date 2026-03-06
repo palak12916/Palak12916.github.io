@@ -1,0 +1,260 @@
+<div class="search-box">
+
+<input type="text" id="searchBox" placeholder="Search Rathore King...">
+
+<button onclick="searchKing()">Search</button>
+
+</div>
+
+<div id="result"></div>
+
+<script src="search.js"></script>function searchKing() {
+
+let input = document.getElementById("searchBox").value.toLowerCase();
+
+let kings = [
+"rao siha",
+"rao jodha",
+"rao bika",
+"rao chandrasen",
+"maharaja jaswant singh",
+"maharaja ajit singh",
+"maharaja abhay singh",
+"maharaja vijay singh",
+"maharaja takhat singh",
+"maharaja hanwant singh"
+];
+
+let result = document.getElementById("result");
+
+if(input === ""){
+result.innerHTML = "Please enter a king name";
+return;
+}
+
+let found = kings.filter(function(king){
+return king.includes(input);
+});
+
+if(found.length > 0){
+
+let list = "<h3>Search Results:</h3><ul>";
+
+found.forEach(function(k){
+list += "<li>" + k + "</li>";
+});
+
+list += "</ul>";
+
+result.innerHTML = list;
+
+}
+
+else{
+
+result.innerHTML = `
+<h3>No exact match found</h3>
+<p>Showing all Rathore Kings:</p>
+
+<ul>
+<li>Rao Siha – Founder of Rathore Dynasty</li>
+<li>Rao Jodha – Founder of Jodhpur</li>
+<li>Rao Bika – Founder of Bikaner</li>
+<li>Rao Chandrasen – Warrior against Mughals</li>
+<li>Maharaja Jaswant Singh – Famous ruler of Marwar</li>
+<li>Maharaja Ajit Singh – Freed Jodhpur from Mughals</li>
+<li>Maharaja Abhay Singh</li>
+<li>Maharaja Vijay Singh</li>
+<li>Maharaja Takhat Singh</li>
+<li>Maharaja Hanwant Singh</li>
+</ul>
+`;
+
+}
+
+}<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Search King</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+#suggestions{
+background:white;
+color:black;
+max-width:300px;
+margin:auto;
+}
+
+.suggestItem{
+padding:8px;
+cursor:pointer;
+border-bottom:1px solid gray;
+}
+
+.suggestItem:hover{
+background:gold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+🔎 Search Rajput King
+
+</header>
+
+<h2>Search King</h2>
+
+<input 
+id="searchBox" 
+placeholder="Type king name"
+onkeyup="showSuggestions()"
+>
+
+<button onclick="voiceSearch()">🎤</button>
+
+<div id="suggestions"></div>
+
+<br>
+
+<button onclick="searchKing()">Search</button>
+
+<div id="result"></div>
+
+<script src="js/script.js"></script>
+
+<script>
+
+/* LIVE SUGGESTIONS */
+
+function showSuggestions(){
+
+let input =
+document.getElementById("searchBox")
+.value
+.toLowerCase();
+
+let suggestions="";
+
+kings.forEach(king=>{
+
+if(king.name.toLowerCase().includes(input)){
+
+suggestions+=`
+
+<div class="suggestItem" 
+onclick="selectKing('${king.name}')">
+
+${king.name}
+
+</div>
+
+`;
+
+}
+
+});
+
+document.getElementById("suggestions").innerHTML=
+suggestions;
+
+}
+
+/* SELECT SUGGESTION */
+
+function selectKing(name){
+
+document.getElementById("searchBox").value=name;
+
+document.getElementById("suggestions").innerHTML="";
+
+searchKing();
+
+}
+
+/* SEARCH RESULT */
+
+function searchKing(){
+
+let input=
+document.getElementById("searchBox")
+.value
+.toLowerCase();
+
+let result = kings.find(k =>
+k.name.toLowerCase().includes(input)
+);
+
+if(result){
+
+document.getElementById("result").innerHTML=
+
+`
+<div class="card">
+
+<img src="${result.image}" width="200">
+
+<h2>${result.name}</h2>
+
+<p>
+
+Birth: ${result.birth}<br>
+Father: ${result.father}<br><br>
+
+${result.distinction}
+
+</p>
+
+</div>
+`;
+
+}
+
+else{
+
+document.getElementById("result").innerHTML=
+
+"<h3>❌ King not found</h3>";
+
+}
+
+}
+
+/* VOICE SEARCH */
+
+function voiceSearch(){
+
+let recognition = new webkitSpeechRecognition();
+
+recognition.lang="en-IN";
+
+recognition.start();
+
+recognition.onresult=function(event){
+
+let voiceText=
+event.results[0][0].transcript;
+
+document.getElementById("searchBox").value=
+voiceText;
+
+searchKing();
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
