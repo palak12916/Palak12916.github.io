@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rajput Quiz</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+👑 Rajput Quiz 👑
+</header>
+
+<div id="quizBox">
+
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<p id="result"></p>
+
+<button onclick="nextQuestion()">Next</button>
+
+<h3 id="score"></h3>
+
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+
+let quiz=[
+
+{
+q:"Who fought Battle of Haldighati?",
+options:["Maharana Pratap","Akbar","Man Singh","Rana Sanga"],
+answer:"Maharana Pratap"
+},
+
+{
+q:"Who founded Jodhpur?",
+options:["Rao Jodha","Bappa Rawal","Pratap","Kumbha"],
+answer:"Rao Jodha"
+},
+
+{
+q:"Who built Kumbhalgarh Fort?",
+options:["Rana Kumbha","Pratap","Sanga","Maldev"],
+answer:"Rana Kumbha"
+},
+
+{
+q:"Who founded Mewar?",
+options:["Bappa Rawal","Pratap","Maldev","Man Singh"],
+answer:"Bappa Rawal"
+},
+
+{
+q:"Who founded Udaipur?",
+options:["Udai Singh","Pratap","Sanga","Lakha"],
+answer:"Udai Singh"
+},
+
+{
+q:"Who fought Babur?",
+options:["Rana Sanga","Pratap","Maldev","Man Singh"],
+answer:"Rana Sanga"
+},
+
+{
+q:"Who founded Bikaner?",
+options:["Rao Bika","Pratap","Jodha","Lakha"],
+answer:"Rao Bika"
+},
+
+{
+q:"Who was Pratap's father?",
+options:["Udai Singh","Maldev","Lakha","Kumbha"],
+answer:"Udai Singh"
+},
+
+{
+q:"Who built Mehrangarh Fort?",
+options:["Rao Jodha","Pratap","Kumbha","Sanga"],
+answer:"Rao Jodha"
+},
+
+{
+q:"Who fought Muhammad Ghori?",
+options:["Prithviraj Chauhan","Pratap","Sanga","Maldev"],
+answer:"Prithviraj Chauhan"
+}
+
+];
+
+let index=0;
+let score=0;
+
+function loadQuestion(){
+
+document.getElementById("question").innerHTML=
+quiz[index].q;
+
+let optionsHTML="";
+
+quiz[index].options.forEach(option=>{
+
+optionsHTML+=`
+
+<button onclick="checkAnswer('${option}')">
+${option}
+</button><br><br>
+
+`;
+
+});
+
+document.getElementById("options").innerHTML=
+optionsHTML;
+
+}
+
+function checkAnswer(answer){
+
+if(answer==quiz[index].answer){
+
+score+=2;
+
+document.getElementById("result").innerHTML=
+"✅ Correct (+2 points)";
+
+}
+
+else{
+
+document.getElementById("result").innerHTML=
+"❌ Wrong";
+
+}
+
+document.getElementById("score").innerHTML=
+"Score: "+score;
+
+}
+
+function nextQuestion(){
+
+index++;
+
+if(index<quiz.length){
+
+loadQuestion();
+
+document.getElementById("result").innerHTML="";
+
+}
+
+else{
+
+document.getElementById("quizBox").innerHTML=
+
+"<h2>Quiz Finished</h2>"+
+"<h1>Your Score: "+score+" / 20</h1>";
+
+}
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
